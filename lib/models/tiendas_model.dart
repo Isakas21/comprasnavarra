@@ -5,8 +5,8 @@ class Tiendas {
   Tiendas.fromJsonList(List<dynamic> jsonList) {
     if (jsonList == null) return;
     jsonList.forEach((json) {
-      final pr = Tienda.fromJson(json);
-      lista.add(pr);
+      final t = Tienda.fromJson(json);
+      lista.add(t);
     });
   }
 }
