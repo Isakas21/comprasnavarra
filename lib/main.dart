@@ -1,5 +1,5 @@
+import 'package:comprasnavarra/screens/tipo_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'screens/zona_screen.dart';
 
 void main() {
@@ -7,14 +7,10 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(
-        title: Text("Castillos y palacios de Navarra"),
-      ),
-      body: ZonaScreen(),
+    return MaterialApp(
+      home: ZonaScreen(),
     );
   }
 }
