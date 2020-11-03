@@ -9,7 +9,7 @@ class ListaTiposScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListTipos Screen'),
+        title: Text('Lista de tipos'),
       ),
       body: _lista(),
     );
@@ -17,7 +17,7 @@ class ListaTiposScreen extends StatelessWidget {
 
   Widget _lista(){
     return FutureBuilder(
-      future: dataProvider.cargarTiendas(),
+      future: dataProvider.getListaTipos(),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
@@ -31,12 +31,12 @@ class ListaTiposScreen extends StatelessWidget {
     );
   }
 
-   List<Widget> _listaElementos(List<Tienda> data) {
+   List<Widget> _listaElementos(List<String> data) {
     final List<Widget> lst = [];
     data.forEach((tnd) {
       final w = ListTile(
-        title: Text(tnd.nombre),
-        subtitle: Text(tnd.tipo),
+        title: Text(tnd),
+        trailing: Icon(Icons.keyboard_arrow_right),
       );
       lst.add(w);
       lst.add(Divider());
