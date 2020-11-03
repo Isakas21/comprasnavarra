@@ -6,8 +6,8 @@ import 'dart:convert';
 import '../models/tiendas_model.dart';
 
 class TiendasProvider{
-  List<Tienda> _listaTiendas = [];
-
+  List<Tienda> listaTiendas = [];
+  List<String> listaTipos = [];
     Future<List<Tienda>> cargarTiendas() async {
     final data = await rootBundle
         .loadString('assets/data/Opendata_Resultados_PM_es.json');
@@ -15,9 +15,10 @@ class TiendasProvider{
     final openData = decodedData['OpenData'];
     final openDataRow = openData['OpenDataRow'];
     Tiendas tiendas = Tiendas.fromJsonList(openDataRow);
-    _listaTiendas = tiendas.lista;
-    return _listaTiendas;
+    listaTiendas = tiendas.lista;
+    return listaTiendas;
   }
        
       
 }
+final dataProvider = new TiendasProvider();
