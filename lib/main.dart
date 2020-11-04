@@ -1,16 +1,16 @@
 import 'package:comprasnavarra/screens/tipo_screen.dart';
 import 'package:flutter/material.dart';
+import 'screens/zona_screen.dart';
 
-main(){
+void main() {
   runApp(MyApp());
-}class MyApp extends StatelessWidget {
+}
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-            title: Text('INICIO')
-        ),
-      body: ListaTiposScreen(),
+    return MaterialApp(
+      home: ZonaScreen(),
     );
   }
 }

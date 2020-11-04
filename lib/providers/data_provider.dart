@@ -1,16 +1,17 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/tienda_model.dart';
-import 'dart:convert';
-
 import '../models/tiendas_model.dart';
 
-class TiendasProvider{
+class TiendasProvider {
   List<Tienda> listaTiendas = [];
   List<String> listaTipos = [];
-    Future<List<Tienda>> cargarTiendas() async {
+  List<String> listaZonas = [];
+
+  Future<List<Tienda>> cargarTiendas() async {
     final data = await rootBundle
-        .loadString('assets/data/Opendata_Resultados_PM_es.json');
+        .loadString('assets/data/Opendata_Resultados_CM_es.json');
     final decodedData = json.decode(data);
     final openData = decodedData['OpenData'];
     final openDataRow = openData['OpenDataRow'];
@@ -18,7 +19,19 @@ class TiendasProvider{
     listaTiendas = tiendas.lista;
     return listaTiendas;
   }
-       
-      
+
+  Future<List<String>> cargarZona() async {
+    if (listaTiendas.length == 0) {
+      await cargarTiendas();
+    }
+    listaZonas = [];
+    listaTiendas.forEach((pr) {
+      if (listaZonas.indexOf(pr.descripZona) < 0) {
+        listaZonas.add(pr.descripZona);
+      }
+    });
+    return listaZonas;
+  }
 }
+
 final dataProvider = new TiendasProvider();
