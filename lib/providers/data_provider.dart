@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/tienda_model.dart';
 import 'dart:convert';
-
 import '../models/tiendas_model.dart';
 
 class TiendasProvider{
@@ -72,9 +71,9 @@ class TiendasProvider{
     return listNombres;
   }    
 
-Future<List<Tienda>> getTienda(String zona, String tipo, String localidad,) async {
+// Future<List<Tienda>> getTienda(String zona, String tipo, String localidad,) async {
 
-  }    
+//   }    
 
 }
 final dataProvider = new TiendasProvider();
