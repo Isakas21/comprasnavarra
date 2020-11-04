@@ -11,6 +11,7 @@ class TiendasProvider{
   List<String> listaZona = [];
   List<String> listaLocalidad = [];
   List<Tienda> listNombres = [];
+  List<Tienda> listTienda = [];
     
     Future<List<Tienda>> cargarTiendas() async {
     final data = await rootBundle
@@ -70,5 +71,10 @@ class TiendasProvider{
     });
     return listNombres;
   }    
+
+Future<List<Tienda>> getTienda(String zona, String tipo, String localidad,) async {
+
+  }    
+
 }
 final dataProvider = new TiendasProvider();
