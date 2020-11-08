@@ -12,6 +12,7 @@ class TiendaScreen extends StatefulWidget {
   @override
   _TiendaScreenState createState() => _TiendaScreenState(tienda: tienda);
 }
+
 class _TiendaScreenState extends State<TiendaScreen> {
   final Tienda tienda;
   final map = new MapController();
