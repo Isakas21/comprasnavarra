@@ -1,3 +1,4 @@
+import 'package:comprasnavarra/screens/localidad_screen.dart';
 import 'package:comprasnavarra/screens/tipo_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/zona_screen.dart';
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ZonaScreen(),
+      home: ListaLocalidadesScreen(),
     );
   }
 }

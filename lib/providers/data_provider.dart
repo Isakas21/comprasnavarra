@@ -8,6 +8,7 @@ class TiendasProvider {
   List<Tienda> listaTiendas = [];
   List<String> listaTipos = [];
   List<String> listaZonas = [];
+  List<String> listaLocalidad = [];
 
   Future<List<Tienda>> cargarTiendas() async {
     final data = await rootBundle
@@ -31,6 +32,20 @@ class TiendasProvider {
       }
     });
     return listaZonas;
+  }
+
+  Future<List<String>> getListaLocalidades(String zona, String tipo) async {
+    if (listaTiendas.length == 0) {
+      await cargarTiendas();
+    }
+    listaTiendas.forEach((tnd) {
+      if (tnd.descripZona == zona &&
+          tnd.tipo == tipo &&
+          listaLocalidad.indexOf(tnd.nombreLocalidad) < 0) {
+        listaLocalidad.add(tnd.nombreLocalidad);
+      }
+    });
+    return listaLocalidad;
   }
 }
 

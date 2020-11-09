@@ -14,7 +14,6 @@ class ZonaScreen extends StatelessWidget {
   }
 
   Widget _listZonas(BuildContext context) {
-    print(dataProvider.cargarZona());
     return FutureBuilder(
       future: dataProvider.cargarZona(),
       initialData: [],
@@ -32,9 +31,9 @@ class ZonaScreen extends StatelessWidget {
 
   List<Widget> _listaElementos(BuildContext context, List<String> data) {
     final List<Widget> lst = [];
-    data.forEach((element) {
+    data.forEach((tnd) {
       final w = ListTile(
-        title: Text(element),
+        title: Text(tnd),
         trailing: Icon(Icons.keyboard_arrow_right),
       );
       lst.add(w);
