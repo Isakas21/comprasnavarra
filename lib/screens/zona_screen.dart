@@ -14,7 +14,6 @@ class ZonaScreen extends StatelessWidget {
   }
 
   Widget _listZonas(BuildContext context) {
-    print(dataProvider.cargarZona());
     return FutureBuilder(
       future: dataProvider.cargarZona(),
       initialData: [],

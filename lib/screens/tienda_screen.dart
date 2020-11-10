@@ -1,15 +1,27 @@
+import 'package:comprasnavarra/models/tienda_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:utm/utm.dart';
+import 'package:latlong/latlong.dart';
 
-class TiendaScreen extends StatelessWidget {
-  final Tienda patrimonio;
+class TiendaScreen extends StatefulWidget {
+  final Tienda tienda;
+
+  TiendaScreen({@required this.tienda});
+
+  @override
+  _TiendaScreenState createState() => _TiendaScreenState(tienda: tienda);
+}
+
+class _TiendaScreenState extends State<TiendaScreen> {
+  final Tienda tienda;
   final map = new MapController();
   var latlon;
 
-  _MapaScreenState({@required this.patrimonio}) {
+  _TiendaScreenState({@required this.tienda}) {
     latlon = UTM.fromUtm(
-      easting: double.parse(patrimonio.georrX),
-      northing: double.parse(patrimonio.georrY),
+      easting: double.parse(tienda.georrX),
+      northing: double.parse(tienda.georrY),
       zoneNumber: 30,
       zoneLetter: "N",
     );
@@ -44,7 +56,7 @@ class TiendaScreen extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text(patrimonio.nombre,
+          Text(tienda.nombre,
               style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
           SizedBox(
             height: 30.0,
@@ -56,14 +68,14 @@ class TiendaScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.0),
                 child: FadeInImage(
                   placeholder: AssetImage('assets/images/cast.jpg'),
-                  image: AssetImage(patrimonio.getImgPath()),
+                  image: AssetImage(tienda.getImgUrl()),
                   fit: BoxFit.cover,
                   height: 120.0,
                 ),
               ),
               Column(
                 children: [
-                  Text(patrimonio.nombreLocalidad),
+                  Text(tienda.nombreLocalidad),
                   Text("Información web"),
                 ],
               )
@@ -94,7 +106,7 @@ class TiendaScreen extends StatelessWidget {
           "{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}",
       additionalOptions: {
         'accessToken':
-            'pk.eyJ1IjoiYWV0eGFiYW8iLCJhIjoiY2tnNHltbHZyMHBqMzJ5cjI5bXd4YzRkOSJ9.AA2XNQgBS47ru9ZXidYX2g',
+            'pk.eyJ1IjoiaXNha2FzIiwiYSI6ImNraDNianhkcjBrMDkyeXBkZ3htcjV0MzUifQ.gwcZJnFUXq3PMiNj1wFXMA',
         'id': 'mapbox.satellite',
       },
     );

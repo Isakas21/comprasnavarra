@@ -8,6 +8,7 @@ class TiendasProvider {
   List<Tienda> listaTiendas = [];
   List<String> listaTipos = [];
   List<String> listaZonas = [];
+  Tienda listaTienda;
 
   Future<List<Tienda>> cargarTiendas() async {
     final data = await rootBundle
@@ -31,6 +32,14 @@ class TiendasProvider {
       }
     });
     return listaZonas;
+  }
+
+  Tienda cargarTienda() {
+    if (listaTiendas.length == 0) {
+      cargarTiendas();
+    }
+    listaTienda = listaTiendas[0];
+    return listaTienda;
   }
 }
 

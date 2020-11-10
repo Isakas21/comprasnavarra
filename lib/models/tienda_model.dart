@@ -9,6 +9,18 @@ Tienda tiendaFromJson(String str) => Tienda.fromJson(json.decode(str));
 String tiendaToJson(Tienda data) => json.encode(data.toJson());
 
 class Tienda {
+  final _url = "https://www.turismo.navarra.es/imgs/rrtt/";
+  final _web =
+      "https://www.turismo.navarra.es/esp/organice-viaje/recurso/recurso.aspx?o=";
+
+//"https://www.turismo.navarra.es/imgs/rrtt/03/01/00/00/5967FotoTH2.JPG";
+  getImgUrl() {
+    return _url + this.path + this.imgFichero;
+  }
+
+  getWebUrl() {
+    return _web + this.codRecurso;
+  }
   Tienda({
     this.codRecurso,
     this.nombre,
