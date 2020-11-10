@@ -97,7 +97,6 @@ class ListaTiposScreen extends StatelessWidget {
         onTap: () {
           box.write('tipos', tnd);
           args['tipos'] = tnd;
-          // Navigator.pushNamed(context, 'localidades', arguments: args);
           Get.offAll(ListaZonaScreen(), arguments: args);
         },
       );
