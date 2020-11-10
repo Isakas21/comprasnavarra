@@ -24,11 +24,11 @@ void main() {
     return GetMaterialApp(
       title: 'Material App',
       //home: ListaTiposScreen()
-      home: (tipos != null)
-         ? ListaTiposScreen()
+      home: (localidad != null)
+         ?  ListaLocalidadesScreen()
             : (zonas != null)
               ? ListaZonaScreen()
-                : ListaLocalidadesScreen(),
+                : ListaTiposScreen()
 
     );
    } 

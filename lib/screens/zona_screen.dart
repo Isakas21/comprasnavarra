@@ -52,7 +52,8 @@ class ListaZonaScreen extends StatelessWidget {
         title: Text(element),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
-          args['localidad'] = element;
+          box.write('zonas', element);
+          args['zonas'] = element;
           Get.offAll(ListaLocalidadesScreen(), arguments: args);
         },
       );

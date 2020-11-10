@@ -10,8 +10,8 @@ class ListaLocalidadesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    box.write('tipo', null);
-    box.write('zona', null);
+    box.write('tipos', null);
+    box.write('zonas', null);
     args = Get.arguments ?? new Map<String, Object>();
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +30,7 @@ class ListaLocalidadesScreen extends StatelessWidget {
   Widget _lista(BuildContext context) {
     return FutureBuilder(
       future: dataProvider.getListaLocalidades(
-          box.read('zona') ?? args['zona'], box.read('tipo') ?? args['tipo']),
+          box.read('zonas') ?? args['zonas'], box.read('tipos') ?? args['tipos']),
       initialData: [],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
