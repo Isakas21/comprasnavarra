@@ -4,15 +4,15 @@ import '../models/tienda_model.dart';
 import 'dart:convert';
 import '../models/tiendas_model.dart';
 
-class TiendasProvider{
+class TiendasProvider {
   List<Tienda> listaTiendas = [];
   List<String> listaTipos = [];
   List<String> listaZona = [];
   List<String> listaLocalidad = [];
   List<Tienda> listNombres = [];
   List<Tienda> listTienda = [];
-    
-    Future<List<Tienda>> cargarTiendas() async {
+
+  Future<List<Tienda>> cargarTiendas() async {
     final data = await rootBundle
         .loadString('assets/data/Opendata_Resultados_CM_es.json');
     final decodedData = json.decode(data);
@@ -29,12 +29,12 @@ class TiendasProvider{
     }
     listaTipos = [];
     listaTiendas.forEach((tnd) {
-      if(listaTipos.indexOf(tnd.tipo) < 0){
+      if (listaTipos.indexOf(tnd.tipo) < 0) {
         listaTipos.add(tnd.tipo);
       }
     });
     return listaTipos;
-  }    
+  }
 
   Future<List<String>> getListaZonas(String tipo) async {
     if (listaTiendas.length == 0) {
@@ -47,37 +47,45 @@ class TiendasProvider{
       }
     });
     return listaZona;
-  }      
-  
+  }
+
   Future<List<String>> getListaLocalidades(String zona, String tipo) async {
     if (listaTiendas.length == 0) {
       await cargarTiendas();
     }
     listaLocalidad = [];
     listaTiendas.forEach((tnd) {
-      if (tnd.descripZona == zona && tnd.tipo == tipo && listaLocalidad.indexOf(tnd.nombreLocalidad) < 0) {
+      if (tnd.descripZona == zona &&
+          tnd.tipo == tipo &&
+          listaLocalidad.indexOf(tnd.nombreLocalidad) < 0) {
         listaLocalidad.add(tnd.nombreLocalidad);
       }
     });
     return listaLocalidad;
-  }      
+  }
 
-  Future<List<Tienda>> getListaNombres(String zona, String tipo, String localidad) async {
+  Future<List<Tienda>> getListaNombres(
+      String zona, String tipo, String localidad) async {
     if (listaTiendas.length == 0) {
       await cargarTiendas();
     }
     listNombres = [];
+
     listaTiendas.forEach((tnd) {
-      if (tnd.descripZona == zona && tnd.tipo == tipo && tnd.nombreLocalidad == localidad && listaLocalidad.indexOf(tnd.nombreLocalidad) < 0) {
+      if (tnd.descripZona == zona &&
+          tnd.tipo == tipo &&
+          tnd.nombreLocalidad == localidad) {
         listNombres.add(tnd);
       }
     });
+    print(listNombres);
     return listNombres;
-  }    
+  }
 
 // Future<List<Tienda>> getTienda(String zona, String tipo, String localidad,) async {
 
-//   }    
+//   }
 
 }
+
 final dataProvider = new TiendasProvider();

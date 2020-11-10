@@ -1,4 +1,5 @@
 import 'package:comprasnavarra/providers/data_provider.dart';
+import 'package:comprasnavarra/screens/select_screen.dart';
 import 'package:comprasnavarra/screens/zona_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,8 @@ class ListaLocalidadesScreen extends StatelessWidget {
   Widget _lista(BuildContext context) {
     return FutureBuilder(
       future: dataProvider.getListaLocalidades(
-          box.read('zonas') ?? args['zonas'], box.read('tipos') ?? args['tipos']),
+          box.read('zonas') ?? args['zonas'],
+          box.read('tipos') ?? args['tipos']),
       initialData: [],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
@@ -53,7 +55,7 @@ class ListaLocalidadesScreen extends StatelessWidget {
         onTap: () {
           box.write('localidad', element);
           args['localidad'] = element;
-          //Get.offAll(nombre_screen(), arguments: args);
+          Get.offAll(SelectScreen(), arguments: args);
         },
       );
       lista.add(w);
