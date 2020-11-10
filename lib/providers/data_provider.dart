@@ -69,14 +69,15 @@ class TiendasProvider {
       await cargarTiendas();
     }
     listNombres = [];
+
     listaTiendas.forEach((tnd) {
       if (tnd.descripZona == zona &&
           tnd.tipo == tipo &&
-          tnd.nombreLocalidad == localidad &&
-          listaLocalidad.indexOf(tnd.nombreLocalidad) < 0) {
+          tnd.nombreLocalidad == localidad) {
         listNombres.add(tnd);
       }
     });
+    print(listNombres);
     return listNombres;
   }
 
