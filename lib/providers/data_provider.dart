@@ -68,7 +68,7 @@ class TiendasProvider{
     }
     listNombres = [];
     listaTiendas.forEach((tnd) {
-      if (tnd.descripZona == zona && tnd.tipo == tipo && tnd.nombreLocalidad == localidad && listaLocalidad.indexOf(tnd.nombreLocalidad) < 0) {
+      if (tnd.descripZona == zona && tnd.tipo == tipo && tnd.nombreLocalidad == localidad) {
         listNombres.add(tnd);
       }
     });
