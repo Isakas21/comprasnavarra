@@ -1,7 +1,8 @@
+import 'package:comprasnavarra/screens/localidad_screen.dart';
 import 'package:comprasnavarra/screens/tipo_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
-import '../providers/data_provider.dart';
 import '../providers/data_provider.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -10,11 +11,13 @@ class ListaZonaScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
   final box = GetStorage();
 
+class ZonaScreen extends StatelessWidget {
+  Map<String, Object> args = new Map<String, Object>();
+  final box = GetStorage();
   @override
   Widget build(BuildContext context) {
-    box.write('zonas', null);
-    box.write('localidad', null);
     args = Get.arguments ?? new Map<String, Object>();
+  
     return Scaffold(
       appBar: AppBar(
         title: Text("Zonas de compra de navarra"),
@@ -52,6 +55,10 @@ class ListaZonaScreen extends StatelessWidget {
       final w = ListTile(
         title: Text(element),
         trailing: Icon(Icons.keyboard_arrow_right),
+        onTap: () {
+          args['localidad'] = element;
+          Get.offAll(ListaLocalidadScreen(), arguments: args);
+        },
       );
       lst.add(w);
       lst.add(Divider());
