@@ -27,6 +27,7 @@ class TiendasProvider{
     if (listaTiendas.length == 0) {
       await cargarTiendas();
     }
+    listaTipos = [];
     listaTiendas.forEach((tnd) {
       if(listaTipos.indexOf(tnd.tipo) < 0){
         listaTipos.add(tnd.tipo);
@@ -39,6 +40,7 @@ class TiendasProvider{
     if (listaTiendas.length == 0) {
       await cargarTiendas();
     }
+    listaZona = [];
     listaTiendas.forEach((tnd) {
       if (tnd.tipo == tipo && listaZona.indexOf(tnd.descripZona) < 0) {
         listaZona.add(tnd.descripZona);
@@ -51,6 +53,7 @@ class TiendasProvider{
     if (listaTiendas.length == 0) {
       await cargarTiendas();
     }
+    listaLocalidad = [];
     listaTiendas.forEach((tnd) {
       if (tnd.descripZona == zona && tnd.tipo == tipo && listaLocalidad.indexOf(tnd.nombreLocalidad) < 0) {
         listaLocalidad.add(tnd.nombreLocalidad);
@@ -63,6 +66,7 @@ class TiendasProvider{
     if (listaTiendas.length == 0) {
       await cargarTiendas();
     }
+    listNombres = [];
     listaTiendas.forEach((tnd) {
       if (tnd.descripZona == zona && tnd.tipo == tipo && tnd.nombreLocalidad == localidad && listaLocalidad.indexOf(tnd.nombreLocalidad) < 0) {
         listNombres.add(tnd);

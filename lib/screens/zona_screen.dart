@@ -32,7 +32,7 @@ class ListaZonaScreen extends StatelessWidget {
 
   Widget _listZonas(BuildContext context) {
     return FutureBuilder(
-      future: dataProvider.getListaZonas(box.read('tipos')?? args['tipos']),
+      future: dataProvider.getListaZonas(box.read('tipos') ?? args['tipos']),
       initialData: [],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {

@@ -27,6 +27,7 @@ dependencies:
   get_storage:
   flutter_map: any
   geolocator: ^5.3.1
+  utm: ^0.1.2
 
 
   # The following adds the Cupertino Icons font to your application.
