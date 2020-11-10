@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 import '../providers/data_provider.dart';
+import 'package:get_storage/get_storage.dart';
+
+
+class ListaZonaScreen extends StatelessWidget {
+  Map<String, Object> args = new Map<String, Object>();
+  final box = GetStorage();
 
 class ZonaScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
@@ -29,7 +35,7 @@ class ZonaScreen extends StatelessWidget {
 
   Widget _listZonas(BuildContext context) {
     return FutureBuilder(
-      future: dataProvider.cargarZona(),
+      future: dataProvider.getListaZonas(box.read('tipos') ?? args['tipos']),
       initialData: [],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
