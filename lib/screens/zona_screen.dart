@@ -11,7 +11,7 @@ class ListaZonaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     args = Get.arguments ?? new Map<String, Object>();
-
+    box.write('tipos', null);
     return Scaffold(
       appBar: AppBar(
         title: Text("Zonas de compra de navarra"),
@@ -50,7 +50,8 @@ class ListaZonaScreen extends StatelessWidget {
         title: Text(element),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
-          args['localidad'] = element;
+          box.write('zonas', element);
+          args['zonas'] = element;
           Get.offAll(ListaLocalidadesScreen(), arguments: args);
         },
       );
