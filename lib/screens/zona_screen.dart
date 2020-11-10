@@ -1,21 +1,35 @@
+import 'package:comprasnavarra/screens/localidad_screen.dart';
+import 'package:comprasnavarra/screens/tipo_screen.dart';
 import 'package:flutter/material.dart';
-import '../providers/data_provider.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:get/get.dart';
 import '../providers/data_provider.dart';
 
-class ZonaScreen extends StatelessWidget {
+class ListaZonaScreen extends StatelessWidget {
+  Map<String, Object> args = new Map<String, Object>();
+  final box = GetStorage();
   @override
   Widget build(BuildContext context) {
+    args = Get.arguments ?? new Map<String, Object>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Zonas de compra de navarra"),
       ),
       body: _listZonas(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //Navigator.pop(context);
+          Get.offAll(ListaTiposScreen(), arguments: args);
+        },
+        child: Icon(Icons.arrow_back),
+      ),
     );
   }
 
   Widget _listZonas(BuildContext context) {
     return FutureBuilder(
-      future: dataProvider.cargarZona(),
+      future: dataProvider.getListaZonas(box.read('tipos') ?? args['tipos']),
       initialData: [],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
@@ -31,10 +45,14 @@ class ZonaScreen extends StatelessWidget {
 
   List<Widget> _listaElementos(BuildContext context, List<String> data) {
     final List<Widget> lst = [];
-    data.forEach((tnd) {
+    data.forEach((element) {
       final w = ListTile(
-        title: Text(tnd),
+        title: Text(element),
         trailing: Icon(Icons.keyboard_arrow_right),
+        onTap: () {
+          args['localidad'] = element;
+          Get.offAll(ListaLocalidadesScreen(), arguments: args);
+        },
       );
       lst.add(w);
       lst.add(Divider());
