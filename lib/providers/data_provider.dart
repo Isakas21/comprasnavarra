@@ -30,6 +30,7 @@ class TiendasProvider{
     listaTipos = [];
     listaTiendas.forEach((tnd) {
       if(listaTipos.indexOf(tnd.tipo) < 0){
+        // String tip = tnd.tipo.substring(tnd.tipo.indexOf("/") + 2, tnd.tipo.length);
         listaTipos.add(tnd.tipo);
       }
     });
