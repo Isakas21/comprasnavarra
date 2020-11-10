@@ -1,5 +1,6 @@
 import 'package:comprasnavarra/models/tienda_model.dart';
 import 'package:comprasnavarra/providers/data_provider.dart';
+import 'package:comprasnavarra/screens/localidad_screen.dart';
 import 'package:comprasnavarra/screens/tienda_screen.dart';
 import 'package:comprasnavarra/screens/tipo_screen.dart';
 import 'package:comprasnavarra/screens/zona_screen.dart';
@@ -25,7 +26,9 @@ void main() {
       //home: ListaTiposScreen()
       home: (tipos != null)
          ? ListaTiposScreen()
-        : ListaZonaScreen(),
+            : (zonas != null)
+              ? ListaZonaScreen()
+                : ListaLocalidadesScreen(),
 
     );
    } 

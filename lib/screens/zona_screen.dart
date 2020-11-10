@@ -10,14 +10,10 @@ import 'package:get_storage/get_storage.dart';
 class ListaZonaScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
   final box = GetStorage();
-
-class ZonaScreen extends StatelessWidget {
-  Map<String, Object> args = new Map<String, Object>();
-  final box = GetStorage();
   @override
   Widget build(BuildContext context) {
     args = Get.arguments ?? new Map<String, Object>();
-  
+    box.write('tipos', null);
     return Scaffold(
       appBar: AppBar(
         title: Text("Zonas de compra de navarra"),
@@ -57,7 +53,7 @@ class ZonaScreen extends StatelessWidget {
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
           args['localidad'] = element;
-          Get.offAll(ListaLocalidadScreen(), arguments: args);
+          Get.offAll(ListaLocalidadesScreen(), arguments: args);
         },
       );
       lst.add(w);
