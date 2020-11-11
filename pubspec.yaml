@@ -26,7 +26,8 @@ dependencies:
   flutter_map: any
   utm: ^0.1.2
   get: ^3.13.2
-  get_storage:
+  get_storage: ^1.3.2
+  flutter_swiper: ^1.1.6
 
 
   # The following adds the Cupertino Icons font to your application.

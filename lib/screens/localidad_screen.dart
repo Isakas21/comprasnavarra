@@ -1,5 +1,5 @@
 import 'package:comprasnavarra/providers/data_provider.dart';
-import 'package:comprasnavarra/screens/select_screen.dart';
+import 'package:comprasnavarra/screens/swiper_screen.dart';
 import 'package:comprasnavarra/screens/zona_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -55,7 +55,7 @@ class ListaLocalidadesScreen extends StatelessWidget {
         onTap: () {
           box.write('localidad', element);
           args['localidad'] = element;
-          Get.offAll(SelectScreen(), arguments: args);
+          Get.offAll(SwiperScreen(), arguments: args);
         },
       );
       lista.add(w);
