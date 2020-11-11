@@ -1,5 +1,6 @@
 import 'package:comprasnavarra/providers/data_provider.dart';
 import 'package:comprasnavarra/screens/localidad_screen.dart';
+import 'package:comprasnavarra/screens/tienda_screen.dart';
 import 'package:comprasnavarra/widget/swiper_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class SelectScreen extends StatelessWidget {
     args = Get.arguments ?? new Map<String, Object>();
     return Scaffold(
         appBar: AppBar(
-          title: Text("Castillos y palacios de Navarra"),
+          title: Text("Tiendas"),
         ),
         body: Container(
           child: Column(

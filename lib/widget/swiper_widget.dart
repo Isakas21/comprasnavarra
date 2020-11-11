@@ -1,4 +1,5 @@
 import 'package:comprasnavarra/models/tienda_model.dart';
+import 'package:comprasnavarra/screens/tienda_screen.dart';
 import 'package:flutter/material.dart';
 
 class SwiperWidget extends StatelessWidget {
@@ -21,16 +22,25 @@ class SwiperWidget extends StatelessWidget {
       itemHeight: screenSize.height * 0.5,
       layout: SwiperLayout.TINDER,
       itemBuilder: (BuildContext context, int index) {
-        return ClipRRect(
-          // borderRadius: BorderRadius.circular(20.0),
-          // child: Image.network(
-          //   "http://via.placeholder.com/350x150",
-          //   fit: BoxFit.fill,
-          // ),
-          child: FadeInImage(
-            placeholder: AssetImage('assets/images/cast.jpg'),
-            image: NetworkImage(lista[index].getImgUrl()),
-            fit: BoxFit.cover,
+        return GestureDetector(
+          onTap: () {
+            print("url: ${lista[index].getWebUrl()}");
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TiendaScreen(tienda: lista[index])));
+          },
+          child: ClipRRect(
+            // borderRadius: BorderRadius.circular(20.0),
+            // child: Image.network(
+            //   "http://via.placeholder.com/350x150",
+            //   fit: BoxFit.fill,
+            // ),
+            child: FadeInImage(
+              placeholder: AssetImage('assets/images/tienda.jpg'),
+              image: NetworkImage(lista[index].getImgUrl()),
+              fit: BoxFit.cover,
+            ),
           ),
         );
       },
