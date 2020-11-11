@@ -19,29 +19,35 @@ class SwiperScreen extends StatelessWidget {
     box.write('localidad', null);
     args = Get.arguments ?? new Map<String, Object>();
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Tiendas"),
+      appBar: AppBar(
+        title: Text("Tiendas"),
+      ),
+      body: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20.0,
+            ),
+            Center(
+                child: Text(
+              "Swiper Nombres",
+              style: Theme.of(context).textTheme.headline6,
+            )),
+            SizedBox(
+              height: 20.0,
+            ),
+            _swiper(),
+          ],
         ),
-        body: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 20.0,
-              ),
-              Center(
-                  child: Text(
-                "Swiper Nombres",
-                style: Theme.of(context).textTheme.headline6,
-              )),
-              SizedBox(
-                height: 20.0,
-              ),
-              _swiper(),
-            ],
-          ),
-        ),
-        );
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.offAll(ListaLocalidadesScreen(), arguments: args);
+        },
+        child: Icon(Icons.arrow_back),
+      ),
+    );
   }
 
   Widget _swiper() {
