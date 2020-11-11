@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-class SelectScreen extends StatelessWidget {
+class SwiperScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
   final box = GetStorage();
 
@@ -56,7 +56,27 @@ class SelectScreen extends StatelessWidget {
       initialData: [],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return SwiperWidget(lista: snapshot.data);
+          if (snapshot.data.length == 1) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            TiendaScreen(tienda: snapshot.data[0])));
+              },
+              child: Center(
+                child: Container(
+                  child: FadeInImage(
+                    placeholder: AssetImage('assets/images/tienda.jpg'),
+                    image: NetworkImage(snapshot.data[0].getImgUrl()),
+                  ),
+                ),
+              ),
+            );
+          } else {
+            return SwiperWidget(lista: snapshot.data);
+          }
         } else {
           return Center(
             child: CircularProgressIndicator(),
