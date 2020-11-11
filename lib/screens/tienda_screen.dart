@@ -1,5 +1,4 @@
 import 'package:comprasnavarra/models/tienda_model.dart';
-import 'package:comprasnavarra/screens/swiper_screen.dart';
 import 'package:comprasnavarra/screens/zona_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -60,12 +59,6 @@ class _TiendaScreenState extends State<TiendaScreen> {
             height: MediaQuery.of(context).size.height * 0.5,
           )
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.offAll(SwiperScreen(), arguments: args);
-        },
-        child: Icon(Icons.arrow_back),
       ),
     );
   }

@@ -53,10 +53,24 @@ class SwiperScreen extends StatelessWidget {
       initialData: [],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.data.lenght != 1) {
-            return Container(
-              child: Text("hola"),
-            )
+          if (snapshot.data.length == 1) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            TiendaScreen(tienda: snapshot.data[0])));
+              },
+              child: Center(
+                child: Container(
+                  child: FadeInImage(
+                    placeholder: AssetImage('assets/images/tienda.jpg'),
+                    image: NetworkImage(snapshot.data[0].getImgUrl()),
+                  ),
+                ),
+              ),
+            );
           } else {
             return SwiperWidget(lista: snapshot.data);
           }
