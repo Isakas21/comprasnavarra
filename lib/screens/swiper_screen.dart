@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:comprasnavarra/providers/data_provider.dart';
 import 'package:comprasnavarra/screens/localidad_screen.dart';
 import 'package:comprasnavarra/screens/tienda_screen.dart';
 import 'package:comprasnavarra/widget/swiper_widget.dart';
-
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SwiperScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
@@ -37,12 +41,7 @@ class SwiperScreen extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.offAll(ListaLocalidadesScreen(), arguments: args);
-          },
-          child: Icon(Icons.arrow_back),
-        ));
+        );
   }
 
   Widget _swiper() {
