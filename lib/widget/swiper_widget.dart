@@ -1,7 +1,6 @@
 import 'package:comprasnavarra/models/tienda_model.dart';
 import 'package:comprasnavarra/screens/tienda_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 class SwiperWidget extends StatelessWidget {
   final List<Tienda> lista;
