@@ -1,6 +1,10 @@
 import 'package:comprasnavarra/models/tienda_model.dart';
+import 'package:comprasnavarra/screens/select_screen.dart';
+import 'package:comprasnavarra/screens/zona_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:utm/utm.dart';
 import 'package:latlong/latlong.dart';
 
@@ -14,6 +18,9 @@ class TiendaScreen extends StatefulWidget {
 }
 
 class _TiendaScreenState extends State<TiendaScreen> {
+  Map<String, Object> args = new Map<String, Object>();
+  final box = GetStorage();
+
   final Tienda tienda;
   final map = new MapController();
   var latlon;
@@ -29,6 +36,11 @@ class _TiendaScreenState extends State<TiendaScreen> {
 
   @override
   Widget build(BuildContext context) {
+    box.write('tipos', null);
+    box.write('zonas', null);
+    box.write('localidad', null);
+    box.write('nombre', null);
+    args = Get.arguments ?? new Map<String, Object>();
     return Scaffold(
       appBar: AppBar(
         title: Text("Mapa"),
@@ -36,11 +48,11 @@ class _TiendaScreenState extends State<TiendaScreen> {
       body: Column(
         children: [
           SizedBox(
-            height: 30.0,
+            height: 23.0,
           ),
           _header(),
           SizedBox(
-            height: 30.0,
+            height: 20.0,
           ),
           Container(
             child: _flutterMap(),
@@ -48,6 +60,12 @@ class _TiendaScreenState extends State<TiendaScreen> {
             height: MediaQuery.of(context).size.height * 0.5,
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.offAll(SelectScreen(), arguments: args);
+        },
+        child: Icon(Icons.arrow_back),
       ),
     );
   }
@@ -67,8 +85,8 @@ class _TiendaScreenState extends State<TiendaScreen> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: FadeInImage(
-                  placeholder: AssetImage('assets/images/cast.jpg'),
-                  image: AssetImage(tienda.getImgUrl()),
+                  placeholder: AssetImage('assets/images/tienda.jpg'),
+                  image: NetworkImage(tienda.getImgUrl()),
                   fit: BoxFit.cover,
                   height: 120.0,
                 ),
@@ -76,7 +94,7 @@ class _TiendaScreenState extends State<TiendaScreen> {
               Column(
                 children: [
                   Text(tienda.nombreLocalidad),
-                  Text("Información web"),
+                  Text(tienda.descripZona),
                 ],
               )
             ],

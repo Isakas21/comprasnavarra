@@ -21,6 +21,7 @@ class Tienda {
   getWebUrl() {
     return _web + this.codRecurso;
   }
+
   Tienda({
     this.codRecurso,
     this.nombre,
