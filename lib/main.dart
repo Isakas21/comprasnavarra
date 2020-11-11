@@ -8,6 +8,7 @@ import 'package:comprasnavarra/screens/zona_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'screens/swiper_screen.dart';
 import 'screens/tipo_screen.dart';
 
 void main() {
@@ -30,8 +31,6 @@ class MyApp extends StatelessWidget {
             ? SelectScreen()
             : (localidad != null)
                 ? ListaLocalidadesScreen()
-                : (zonas != null)
-                    ? ListaZonaScreen()
-                    : ListaTiposScreen());
+                : (zonas != null) ? ListaZonaScreen() : ListaTiposScreen());
   }
 }
